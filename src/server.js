@@ -1,6 +1,6 @@
-const hapi = require('hapi');
+import hapi from 'hapi';
 
-const routes = require('./routes');
+import routes from './routes';
 
 const server = new hapi.Server({
   host: '0.0.0.0',

@@ -1,3 +1,3 @@
 const pingHandler = () => 'pong';
 
-module.exports = pingHandler;
+export default pingHandler;

@@ -1,6 +1,6 @@
-const pingHandler = require('../handlers/ping');
+import pingHandler from '../handlers/ping';
 
-module.exports = [
+export default [
   {
     path: '/ping',
     method: 'GET',

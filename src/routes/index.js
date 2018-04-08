@@ -1,5 +1,5 @@
-const ping = require('./ping');
+import ping from './ping';
 
-module.exports = [
+export default [
   ...ping,
 ];
