@@ -1,3 +1,11 @@
+# Node modules
 /node_modules
 
+# Error and log files
 **/*.log
+
+# Environment variables from dotenv 
+**/*.env
+
+# Sourcemaps and distribution files from babel
+/dist
