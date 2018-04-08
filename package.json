@@ -1,0 +1,22 @@
+{
+  "name": "giveback-backend",
+  "version": "1.0.0",
+  "description": "Hapi.js server to store group transactions.",
+  "main": "src/server.js",
+  "repository": "ssh://git@acer/repo/giveback/backend.git",
+  "author": "Saurav Sahu <sauravsahu.12@live.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "hapi": "17"
+  },
+  "devDependencies": {
+    "@types/hapi": "^17.0.9",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0"
+  }
+}
