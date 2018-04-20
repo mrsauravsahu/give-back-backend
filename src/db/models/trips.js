@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
 
   trips.associate = (models) => {
     trips.belongsTo(models.users, { as: 'createdBy', foreignKey: 'createdByUserId' });
+    trips.belongsToMany(models.users, { as: 'members', through: 'tripMembers', foreignKey: 'userId' });
   };
   return trips;
 };
