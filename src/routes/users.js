@@ -1,10 +1,10 @@
-import { getAll, postOne } from '../handlers/users';
+import { get, postOne } from '../handlers/users';
 
 export default [
   {
-    path: '/users',
+    path: '/api/users',
     method: 'GET',
-    handler: getAll,
+    handler: request => get(request.query.id),
   },
   {
     path: '/users',
