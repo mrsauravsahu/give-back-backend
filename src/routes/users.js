@@ -6,5 +6,10 @@ export default [
     method: 'GET',
     handler: getAll,
   },
+  {
+    path: '/users',
+    method: 'POST',
+    handler: postOne,
+  },
 ];
 
