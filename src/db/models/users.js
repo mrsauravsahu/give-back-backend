@@ -6,7 +6,8 @@ module.exports = (sequelize) => {
 
   users.associate = (db) => {
     users.hasOne(db.facebooks);
-    users.belongsToMany(users, { as: 'friends', through: 'friendships' });
+    users.belongsToMany(users, { as: 'myFriends', through: 'friendships', foreignKey: 'userId' });
+    users.belongsToMany(users, { as: 'otherFriends', through: 'friendships', foreignKey: 'friendId' });
   };
   users.newUser = user => users.create(user, {
     include: [{ model: models.facebooks }],

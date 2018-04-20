@@ -31,16 +31,49 @@ export const postOne = async () => {
   }
 };
 
-export const getAll = async () => {
+export const get = async (id) => {
   try {
-    const data = await models.users.findAll({
+    const data = await models.users.find({
+      where: { id },
+      attributes: ['id'],
       include: [
-        { model: models.facebooks },
-        { model: models.friendships },
+        {
+          model: models.facebooks,
+          attributes: ['firstName', 'lastName', 'pictureUrl', 'fbId'],
+        },
+        {
+          model: models.users,
+          attributes: ['id'],
+          as: 'myFriends',
+          through: {
+            attributes: [],
+          },
+          include: [
+            {
+              model: models.facebooks,
+              attributes: ['firstName', 'lastName', 'pictureUrl', 'fbId'],
+            },
+          ],
+        },
+        {
+          model: models.users,
+          attributes: ['id'],
+          as: 'otherFriends',
+          through: {
+            attributes: [],
+          },
+          include: [
+            {
+              model: models.facebooks,
+              attributes: ['firstName', 'lastName', 'pictureUrl', 'fbId'],
+            },
+          ],
+        },
       ],
     });
     return data;
   } catch (err) {
+    console.log(err.message);
     return err;
   }
 };
