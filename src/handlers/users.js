@@ -69,6 +69,10 @@ export const get = async (id) => {
             },
           ],
         },
+        {
+          model: models.trips,
+          as: 'trips',
+        },
       ],
     });
     return data;
