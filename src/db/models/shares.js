@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
 
   shares.associate = (models) => {
     shares.belongsTo(models.users, { as: 'user', foreignKey: 'userId' });
-    shares.belongsTo(models.transaction, { as: 'transaction', foreignKey: 'transactionId' });
+    shares.belongsTo(models.transactions, { as: 'transaction', foreignKey: 'transactionId' });
     shares.belongsTo(models.trips, { as: 'trip', foreignKey: 'tripId' });
   };
 
