@@ -33,48 +33,7 @@ export const postOne = async () => {
 
 export const get = async (id) => {
   try {
-    const data = await models.users.find({
-      where: { id },
-      attributes: ['id'],
-      include: [
-        {
-          model: models.facebooks,
-          attributes: ['firstName', 'lastName', 'pictureUrl', 'fbId'],
-        },
-        {
-          model: models.users,
-          attributes: ['id'],
-          as: 'myFriends',
-          through: {
-            attributes: [],
-          },
-          include: [
-            {
-              model: models.facebooks,
-              attributes: ['firstName', 'lastName', 'pictureUrl', 'fbId'],
-            },
-          ],
-        },
-        {
-          model: models.users,
-          attributes: ['id'],
-          as: 'otherFriends',
-          through: {
-            attributes: [],
-          },
-          include: [
-            {
-              model: models.facebooks,
-              attributes: ['firstName', 'lastName', 'pictureUrl', 'fbId'],
-            },
-          ],
-        },
-        {
-          model: models.trips,
-          as: 'trips',
-        },
-      ],
-    });
+    const data = await models.users.getById(id);
     return data;
   } catch (err) {
     console.log(err.message);
