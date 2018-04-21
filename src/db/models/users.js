@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
   users.getById = async (id) => {
     const currentUserEntity = (await users.find({
       where: { id },
-      attributes: ['id'],
+      attributes: ['id', 'createdAt', 'updatedAt'],
       include: [
         {
           model: sequelize.models.facebooks,
