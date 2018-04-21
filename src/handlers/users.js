@@ -33,7 +33,7 @@ export const postOne = async () => {
 
 export const get = async (id) => {
   try {
-    const data = await models.users.getById(id);
+    const data = await models.users.getByIdAsync(id);
     return data;
   } catch (err) {
     console.log(err.message);
