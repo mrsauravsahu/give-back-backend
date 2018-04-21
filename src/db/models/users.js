@@ -24,5 +24,49 @@ module.exports = (sequelize) => {
     ],
   });
 
+  users.getFriendsAsync = async (id) => {
+    // Generates the friends include object
+    const friendsInclude = alias => ({
+      model: sequelize.models.users,
+      attributes: ['id'],
+      as: alias,
+      through: {
+        attributes: [],
+      },
+      include: [
+        {
+          model: sequelize.models.facebooks,
+          attributes: ['firstName', 'lastName', 'pictureUrl', 'fbId'],
+        },
+      ],
+    });
+
+    const userEntity = (await users.findOne({
+      where: {
+        id,
+      },
+      attributes: [],
+      include: [
+        friendsInclude('myFriends'),
+        friendsInclude('otherFriends'),
+        {
+          model: sequelize.models.trips,
+          as: 'trips',
+        },
+      ],
+    })).toJSON();
+
+    const userFriends = {};
+
+    [userEntity.myFriends, userEntity.otherFriends]
+      .forEach((friends) => {
+        friends.forEach((p) => {
+          if (!userFriends[p.id]) { userFriends[p.id] = p; }
+        });
+      });
+
+    return Object.values(userFriends);
+  };
+
   return users;
 };
