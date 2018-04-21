@@ -1,5 +1,9 @@
 import hapi from 'hapi';
 
+// Hapi plugins
+import good from 'good';
+import goodPluginOptions from './config/good-plugin-options';
+
 import './env';
 
 import routes from './routes';
@@ -11,6 +15,10 @@ const server = new hapi.Server({
 });
 
 server.route(routes);
+
+server.register([
+  { plugin: good, options: goodPluginOptions },
+]);
 
 export default server;
 
