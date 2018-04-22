@@ -1,15 +1,8 @@
-export const resolvers = models => ({
+import allResolvers from '../resolvers/index';
+
+export const resolvers = () => ({
   Query: {
-    me: (root, { id }) => models.users.find({
-      where: { id },
-      attributes: ['id', 'createdAt', 'updatedAt'],
-      include: [
-        {
-          model: models.facebooks,
-          attributes: ['firstName', 'lastName', 'pictureUrl', 'fbId'],
-        },
-      ],
-    }),
+    me: (root, { id }) => allResolvers.me(id),
   },
 });
 
