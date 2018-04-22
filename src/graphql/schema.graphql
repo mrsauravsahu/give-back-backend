@@ -1,0 +1,17 @@
+type User {
+  id: Int,
+  facebook: Facebook
+}
+
+type Facebook {
+  firstName: String,
+  lastName: String
+}
+
+type Query {
+  me(id: Int): User
+}
+
+schema {
+  query: Query
+}
