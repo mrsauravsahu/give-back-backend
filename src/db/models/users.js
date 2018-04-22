@@ -49,23 +49,10 @@ module.exports = (sequelize) => {
       include: [
         friendsInclude('myFriends'),
         friendsInclude('otherFriends'),
-        {
-          model: sequelize.models.trips,
-          as: 'trips',
-        },
       ],
     })).toJSON();
 
-    const userFriends = {};
-
-    [userEntity.myFriends, userEntity.otherFriends]
-      .forEach((friends) => {
-        friends.forEach((p) => {
-          if (!userFriends[p.id]) { userFriends[p.id] = p; }
-        });
-      });
-
-    return Object.values(userFriends);
+    return userEntity;
   };
 
   return users;

@@ -12,8 +12,14 @@ type Facebook {
   fbId: String,
 }
 
+type Friend {
+  myFriends: [User]
+  otherFriends: [User]
+} 
+
 type Query {
   me(id: Int): User
+  friends(id: Int): Friend
 }
 
 schema {
