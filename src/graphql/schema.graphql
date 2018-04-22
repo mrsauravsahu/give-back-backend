@@ -12,6 +12,16 @@ type Facebook {
   fbId: String,
 }
 
+type Trip {
+  id: Int,
+  name: String,
+  description: String,
+  endDate: String,
+  createdAt: String,
+  updatedAt: String,
+  members: [User]
+}
+
 type Friend {
   myFriends: [User]
   otherFriends: [User]
@@ -20,6 +30,7 @@ type Friend {
 type Query {
   me(id: Int): User
   friends(id: Int): Friend
+  trips(id: Int): [Trip]
 }
 
 schema {

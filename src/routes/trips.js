@@ -3,6 +3,14 @@ import models from './../db/models';
 export default [
   {
     path: '/api/trips',
+    method: 'GET',
+    handler: (request) => {
+      const { userId } = request.query;
+      return models.trips.getTripsAsync(userId);
+    },
+  },
+  {
+    path: '/api/trips',
     method: 'POST',
     handler: async (request) => {
       const {
