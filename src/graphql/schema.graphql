@@ -1,11 +1,15 @@
 type User {
   id: Int,
-  facebook: Facebook
+  facebook: Facebook,
+  createdAt: String,
+  updatedAt: String
 }
 
 type Facebook {
   firstName: String,
-  lastName: String
+  lastName: String,
+  pictureUrl: String,
+  fbId: String,
 }
 
 type Query {
