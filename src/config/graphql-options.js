@@ -2,13 +2,12 @@ import { makeExecutableSchema } from 'graphql-tools';
 
 import graphqlSchema from '../graphql/schema.graphql';
 import createResolvers from '../graphql/resolvers';
-import models from '../db/models';
 
 const executableSchema = makeExecutableSchema({
   typeDefs: [
     graphqlSchema,
   ],
-  resolvers: createResolvers(models),
+  resolvers: createResolvers(),
 });
 
 export default {
