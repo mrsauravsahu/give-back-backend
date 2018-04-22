@@ -10,3 +10,4 @@ This project is being made as a Mini Project for the CSharp practical laboratory
 - Xamarin.Forms mobile app
 - PostgreSQL database
 - Sequelize ORM
+- GraphQL
