@@ -6,8 +6,13 @@ import allConfig from '../../config/database';
 
 const basename = _basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = allConfig[env];
+// Disable operator aliases
+const config = {
+  ...allConfig[env],
+  operatorsAliases: false,
+};
 const db = {};
+
 
 let sequelize;
 if (config.use_env_variable) {
