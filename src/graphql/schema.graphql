@@ -22,17 +22,43 @@ type Trip {
   members: [User]
 }
 
-type Friend {
-  myFriends: [User]
-  otherFriends: [User]
-} 
-
 type Query {
-  me(id: Int): User
-  friends(id: Int): Friend
-  trips(id: Int): [Trip]
+  me(id: Int): Tables
+  friends(id: Int): Tables
+  trips(id: Int): Tables
 }
 
 schema {
   query: Query
+}
+
+type Tables {
+  facebooks: [Facebook]
+  friendships: [FriendShip]
+  shares: [Share]
+  transactions: [Transaction]
+  trips: [Trip]
+  users: [User]
+}
+
+type FriendShip {
+  userId: Int
+  friendId: Int
+  createdAt: String
+  updatedAt: String
+}
+
+type Share {
+  amount: Double,
+  userId: Int
+  transactionId: Int
+  tripId: Int
+  createdAt: String
+  updatedAt: String
+}
+
+type Transaction {
+  amount: Double
+  tripId: Int
+  userId: Int
 }
