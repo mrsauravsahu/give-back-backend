@@ -49,7 +49,7 @@ type FriendShip {
 }
 
 type Share {
-  amount: Double,
+  amount: Float,
   userId: Int
   transactionId: Int
   tripId: Int
@@ -58,7 +58,7 @@ type Share {
 }
 
 type Transaction {
-  amount: Double
+  amount: Float
   tripId: Int
   userId: Int
 }
