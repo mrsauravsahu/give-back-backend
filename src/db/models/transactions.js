@@ -25,7 +25,14 @@ module.exports = (sequelize, DataTypes) => {
   transactions.associate = (models) => {
     transactions.belongsTo(models.users, { as: 'addedBy', foreignKey: 'userId' });
     transactions.belongsTo(models.trips, { as: 'trip', foreignKey: 'tripId' });
+    transactions.hasMany(models.shares, { foreignKey: 'transactionId' });
   };
+
+  transactions.getTripTransactionsAsync = tripId => sequelize.models.transactions
+    .findAll({
+      where: { tripId },
+      include: [{ model: sequelize.models.shares }],
+    });
 
   return transactions;
 };
