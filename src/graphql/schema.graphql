@@ -1,55 +1,46 @@
-type User {
-  id: Int,
-  facebook: Facebook,
-  createdAt: String,
-  updatedAt: String
-}
-
-type Facebook {
-  firstName: String,
-  lastName: String,
-  pictureUrl: String,
-  fbId: String,
-}
-
-type Trip {
-  id: Int,
-  name: String,
-  description: String,
-  endDate: String,
-  createdAt: String,
-  updatedAt: String,
-  members: [User]
-}
-
 type Query {
-  me(id: Int): Tables
-  friends(id: Int): Tables
-  trips(id: Int): Tables
+  me(id: Int): User
+  friends(id: Int): [User]
+  trips(id: Int): [Trip]
 }
 
 schema {
   query: Query
 }
 
-type Tables {
-  facebooks: [Facebook]
-  friendships: [FriendShip]
-  shares: [Share]
-  transactions: [Transaction]
-  trips: [Trip]
-  users: [User]
-}
-
-type FriendShip {
-  userId: Int
-  friendId: Int
+type User {
+  id: Int
+  facebook: Facebook
   createdAt: String
   updatedAt: String
 }
 
+type Facebook {
+  id: Int
+  firstName: String
+  lastName: String
+  pictureUrl: String
+  fbId: String
+  userId: Int
+  createdAt: String
+  updatedAt: String
+}
+
+type Trip {
+  id: Int
+  name: String
+  description: String
+  endDate: String
+  createdAt: String
+  updatedAt: String
+  createdByUserId: Int
+  members: [User]
+  transactions: [Transaction]
+}
+
 type Share {
-  amount: Float,
+  id: Int
+  amount: Float
   userId: Int
   transactionId: Int
   tripId: Int
@@ -58,7 +49,11 @@ type Share {
 }
 
 type Transaction {
+  id: Int
   amount: Float
   tripId: Int
   userId: Int
+  shares: [Share]
+  createdAt: String
+  updatedAt: String
 }
