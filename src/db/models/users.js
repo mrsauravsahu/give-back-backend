@@ -1,3 +1,5 @@
+const linq = require('linq');
+
 module.exports = (sequelize) => {
   const users = sequelize.define('users', {
   });
@@ -28,17 +30,11 @@ module.exports = (sequelize) => {
     // Generates the friends include object
     const friendsInclude = alias => ({
       model: sequelize.models.users,
-      attributes: ['id'],
       as: alias,
       through: {
         attributes: [],
       },
-      include: [
-        {
-          model: sequelize.models.facebooks,
-          attributes: ['firstName', 'lastName', 'pictureUrl', 'fbId'],
-        },
-      ],
+      include: [{ model: sequelize.models.facebooks }],
     });
 
     const userEntity = (await users.findOne({
@@ -52,7 +48,13 @@ module.exports = (sequelize) => {
       ],
     })).toJSON();
 
-    return userEntity;
+    const friends = linq
+      .from([...userEntity.myFriends, ...userEntity.otherFriends])
+      .groupBy(friend => friend.id)
+      .select(friendGroup => friendGroup.first())
+      .toArray();
+
+    return friends;
   };
 
   return users;
