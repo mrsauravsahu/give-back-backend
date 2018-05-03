@@ -2,9 +2,9 @@ import allResolvers from '../resolvers/index';
 
 export const resolvers = () => ({
   Query: {
-    me: (root, { id }) => allResolvers.me(id),
-    friends: (root, { id }) => allResolvers.friends(id),
-    trips: (root, { id }) => allResolvers.trips(id),
+    me: () => allResolvers.me(1),
+    friends: () => allResolvers.friends(1),
+    trips: () => allResolvers.trips(1),
   },
 });
 
