@@ -1,4 +1,4 @@
-import models from '../db/models';
+import models from '../../db/models';
 
 export const trips = async (id) => {
   const tripsData = await models.trips.getTripsAsync(id);

@@ -1,4 +1,4 @@
-import models from '../db/models';
+import models from '../../db/models';
 
 export const me = id => models.users.find({
   where: { id },

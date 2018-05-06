@@ -1,4 +1,4 @@
-import allResolvers from '../resolvers/index';
+import allResolvers from './resolvers/index';
 
 export const resolvers = () => ({
   Query: {
