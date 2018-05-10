@@ -1,3 +1,5 @@
+scalar Date
+
 type Query {
   me(id: Int): User
   friends(id: Int): [User]
@@ -11,8 +13,8 @@ schema {
 type User {
   id: Int
   facebook: Facebook
-  createdAt: String
-  updatedAt: String
+  createdAt: Date
+  updatedAt: Date
 }
 
 type Facebook {
@@ -22,8 +24,8 @@ type Facebook {
   pictureUrl: String
   fbId: String
   userId: Int
-  createdAt: String
-  updatedAt: String
+  createdAt: Date
+  updatedAt: Date
 }
 
 type Trip {
@@ -31,8 +33,8 @@ type Trip {
   name: String
   description: String
   endDate: String
-  createdAt: String
-  updatedAt: String
+  createdAt: Date
+  updatedAt: Date
   createdByUserId: Int
   members: [User]
   transactions: [Transaction]
@@ -44,8 +46,8 @@ type Share {
   userId: Int
   transactionId: Int
   tripId: Int
-  createdAt: String
-  updatedAt: String
+  createdAt: Date
+  updatedAt: Date
 }
 
 type Transaction {
@@ -54,6 +56,6 @@ type Transaction {
   tripId: Int
   userId: Int
   shares: [Share]
-  createdAt: String
-  updatedAt: String
+  createdAt: Date
+  updatedAt: Date
 }
